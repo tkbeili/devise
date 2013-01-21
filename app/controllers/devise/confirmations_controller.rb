@@ -25,6 +25,7 @@ class Devise::ConfirmationsController < ApplicationController
 
     if resource.errors.empty?
       set_flash_message :notice, :confirmed
+      sign_out_all_scopes
       sign_in_and_redirect(resource_name, resource)
     else
       render_with_scope :new
